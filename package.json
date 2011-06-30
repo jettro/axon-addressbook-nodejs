@@ -1,0 +1,13 @@
+{
+    "name":"axon-addressbook-nodejs",
+    "description":"An application to show addresses using an axonframework backend",
+    "version":"0.1.0",
+    "author":"Jettro Coenradie <jettro@gridshore.nl>",
+    "dependencies":{
+        "express":"",
+        "jade":"",
+        "":""
+    },
+    "main":"app.js"
+
+}

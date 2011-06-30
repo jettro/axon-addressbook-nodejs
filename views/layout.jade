@@ -1,0 +1,14 @@
+!!! 5
+html(lang="en")
+    head
+        title Nodejs presenter
+        link(href="/style/main.css", media="screen", rel="stylesheet", type="text/css")
+        script(src='/js/jquery-1.6.1.min.js')
+        script(src='/js/local.js')
+    body
+        div#heading
+            p header
+        div#body!= body
+        div#footer
+            p footer
+
