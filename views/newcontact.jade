@@ -1,0 +1,14 @@
+h1 New Contact
+- if (error)
+    div.error
+        #{error}
+div
+    div
+        form(method="post")
+            fieldset
+                legend new contact
+                p
+                    label(for="new_name") Name:
+                        input(type="text", name="new_name", size="50")
+            p.buttons
+                input(type="submit", value="Create")

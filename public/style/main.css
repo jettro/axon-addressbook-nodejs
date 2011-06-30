@@ -1,0 +1,16 @@
+#heading {
+    display: block;
+}
+#heading a {
+    padding-right: 10px;
+}
+#body {
+    display: block;
+}
+#footer {
+    display: block;
+}
+
+.error {
+    color: red;
+}

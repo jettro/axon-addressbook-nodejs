@@ -20,6 +20,8 @@ app.configure(function() {
 });
 
 app.get('/', contactController.listContacts);
+app.get('/new', contactController.newContactShowForm);
+app.post('/new', contactController.newContactPostForm);
 
 app.listen(8018);
 console.log('Express server started on port %s', app.address().port);

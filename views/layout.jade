@@ -3,11 +3,14 @@ html(lang="en")
     head
         title Nodejs presenter
         link(href="/style/main.css", media="screen", rel="stylesheet", type="text/css")
+        link(href="/style/sunny/jquery-ui-1.8.14.custom.css", media="screen", rel="stylesheet", type="text/css")
         script(src='/js/jquery-1.6.1.min.js')
+        script(src='/js/jquery-ui-1.8.14.custom.min.js')
         script(src='/js/local.js')
     body
         div#heading
-            p header
+            a(href="/") List
+            a(href="/new") New Contact
         div#body!= body
         div#footer
             p footer
