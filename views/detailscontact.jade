@@ -1,0 +1,18 @@
+h1 Contact: #{contact.name}
+div
+    - each address in contact.addresses
+        tr
+            td(colspan="2")
+                div.address
+                    h2 #{address.addressType}
+                    table
+                        tr
+                            th street
+                            td #{address.streetAndNumber}
+                        tr
+                            th zip code
+                            td #{address.zipCode}
+                        tr
+                            th city
+                            td #{address.city}
+

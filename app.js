@@ -20,8 +20,13 @@ app.configure(function() {
 });
 
 app.get('/', contactController.listContacts);
-app.get('/new', contactController.newContactShowForm);
-app.post('/new', contactController.newContactPostForm);
+app.get('/contact/new', contactController.newContactShowForm);
+app.post('/contact/new', contactController.newContactPostForm);
+app.get('/contact/:identifier',contactController.contact);
+app.get('/contact/:identifier/edit',contactController.changeContactShowForm);
+app.post('/contact/:identifier/edit',contactController.changeContactPostForm);
+app.get('/contact/:identifier/delete',contactController.deleteContactShowForm);
+app.post('/contact/:identifier/delete',contactController.deleteContactPostForm);
 
 app.listen(8018);
 console.log('Express server started on port %s', app.address().port);

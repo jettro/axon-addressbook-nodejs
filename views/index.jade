@@ -5,5 +5,9 @@ table
         tr
             td #{contact.identifier}
             td #{contact.name}
+            td
+                a(href="/contact/#{contact.identifier}") details | 
+                a(href="/contact/#{contact.identifier}/edit") edit | 
+                a(href="/contact/#{contact.identifier}/delete") delete
 
 

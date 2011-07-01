@@ -14,3 +14,11 @@
 .error {
     color: red;
 }
+
+.address {
+    margin-left: 100px;
+}
+
+.address table th {
+    text-align: left;
+}

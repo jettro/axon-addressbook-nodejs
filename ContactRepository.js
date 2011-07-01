@@ -25,7 +25,6 @@ ContactRepository.prototype.listContacts = function(callback) {
             callback(JSON.parse(data));
         });
     });
-
 };
 
 ContactRepository.prototype.newContact = function(name, callback) {
@@ -36,15 +35,67 @@ ContactRepository.prototype.newContact = function(name, callback) {
         res.on('data', function(data) {
             if (res.statusCode != 200) {
                 console.log(data);
-                callback('error','Maybe the name is already taken?');
+                callback('error', 'Maybe the name is already taken?');
             } else {
-                callback('ok','The new contact has been send')
+                callback('ok', 'The new contact has been send')
             }
         });
     });
 
     var contact = {};
     contact.name = name;
+
+    req.write(JSON.stringify(contact));
+    req.end();
+};
+
+ContactRepository.prototype.changeNameOfContact = function(contact, callback) {
+    var opts = createHttpRequestOpts('/contacts', 'PUT');
+
+    var req = http.request(opts, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', function(data) {
+            if (res.statusCode != 200) {
+                console.log(data);
+                callback('error', 'Maybe the name is already taken?');
+            } else {
+                callback('ok', 'The contact has been updated')
+            }
+        });
+    });
+
+    req.write(JSON.stringify(contact));
+    req.end();
+};
+
+ContactRepository.prototype.obtainContact = function(identifier, callback) {
+    var opts = createHttpRequestOpts('/contacts/' + identifier, 'GET');
+
+    var req = http.get(opts, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', function(data) {
+            callback(JSON.parse(data));
+        });
+    });
+};
+
+ContactRepository.prototype.removeContact = function(identifier, callback) {
+    var opts = createHttpRequestOpts('/contacts', 'DELETE');
+
+    var req = http.request(opts, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', function(data) {
+            if (res.statusCode != 200) {
+                console.log(data);
+                callback('error', 'Did you for get to send an identifier?');
+            } else {
+                callback('ok', 'The new contact removal process has been send')
+            }
+        });
+    });
+
+    var contact = {};
+    contact.identifier = identifier;
 
     req.write(JSON.stringify(contact));
     req.end();

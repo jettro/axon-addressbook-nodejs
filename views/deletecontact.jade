@@ -1,0 +1,12 @@
+h1 Delete Contact
+- if (error)
+    div.error
+        #{error}
+div
+    div
+        form(method="post")
+            fieldset
+                legend change contact name
+                p Name: #{contact.name}
+            p.buttons
+                input(type="submit", value="Delete")
