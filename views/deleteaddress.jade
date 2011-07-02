@@ -1,19 +1,23 @@
-h1 Delete #{address.addressType} Address for #{address.name}
-- if (error)
-    div.error
-        #{error}
-form(method="post")
-    div.address
-        h2 #{address.addressType}
-        table
-            tr
-                th street
-                td #{address.streetAndNumber}
-            tr
-                th zip code
-                td #{address.zipCode}
-            tr
-                th city
-                td #{address.city}
-    p.buttons
-        input(type="submit", value="Delete")
+div.ui-widget-content.ui-corner-all.contacts
+    h3.ui-widget-header.ui-corner-all Delete #{address.addressType} Address for #{address.name}
+
+    - if (error)
+        div.ui-state-error.ui-corner-all
+            span.ui-icon.ui-icon-alert
+            #{error}
+
+    form(method="post")
+        div.address
+            h2 #{address.addressType}
+            table
+                tr
+                    th street
+                    td #{address.streetAndNumber}
+                tr
+                    th zip code
+                    td #{address.zipCode}
+                tr
+                    th city
+                    td #{address.city}
+        p.buttons
+            input(type="submit", value="Delete")

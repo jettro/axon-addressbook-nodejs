@@ -1,21 +1,28 @@
-h1 Contact: #{contact.name}
-div
-    a(href="/contact/#{contact.identifier}/address/new") new address
-div
-    - each address in contact.addresses
-        div.address
-            h2 #{address.addressType}
-            table
-                tr
-                    th street
-                    td #{address.streetAndNumber}
-                tr
-                    th zip code
-                    td #{address.zipCode}
-                tr
-                    th city
-                    td #{address.city}
-            div
-                a(href="/contact/#{contact.identifier}/address/#{address.addressType}/edit") edit 
-                a(href="/contact/#{contact.identifier}/address/#{address.addressType}/delete") delete
+div.ui-widget-content.ui-corner-all.contacts
+    h3.ui-widget-header.ui-corner-all Contact: #{contact.name}
+    div
+        a(href="/contact/#{contact.identifier}/address/new") new address
+    div
+        - each address in contact.addresses
+            div.address
+                h2 #{address.addressType}
+                table
+                    tr
+                        th street
+                        td #{address.streetAndNumber}
+                    tr
+                        th zip code
+                        td #{address.zipCode}
+                    tr
+                        th city
+                        td #{address.city}
+                div
+                    div.icon(title="edit")
+                        a(href="/contact/#{contact.identifier}/address/#{address.addressType}/edit")
+                            span.ui-icon.ui-icon-pencil edit
+                    div.icon(title="delete")
+                        a(href="/contact/#{contact.identifier}/address/#{address.addressType}/delete")
+                            span.ui-icon.ui-icon-trash delete
+                div.block
+
 

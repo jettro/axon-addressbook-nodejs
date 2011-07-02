@@ -1,8 +1,10 @@
-h1 New Contact
-- if (error)
-    div.error
-        #{error}
-div
+div.ui-widget-content.ui-corner-all.contacts
+    h3.ui-widget-header.ui-corner-all New Contact
+
+    - if (error)
+        div.ui-state-error.ui-corner-all
+            span.ui-icon.ui-icon-alert
+            #{error}
     div
         form(method="post")
             fieldset

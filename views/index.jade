@@ -1,13 +1,16 @@
-h2 Contacts
+div.ui-widget-content.ui-corner-all.contacts
+    h3.ui-widget-header.ui-corner-all Contacts
 
-table
-    - each contact in contacts
-        tr
-            td #{contact.identifier}
-            td #{contact.name}
-            td
-                a(href="/contact/#{contact.identifier}") details | 
-                a(href="/contact/#{contact.identifier}/edit") edit | 
-                a(href="/contact/#{contact.identifier}/delete") delete
-
+    table
+        - each contact in contacts
+            tr
+                td.name
+                    a(href="/contact/#{contact.identifier}") #{contact.name}
+                td
+                    div.icon(title="edit")
+                        a(href="/contact/#{contact.identifier}/edit", title="edit")
+                            span.ui-icon.ui-icon-pencil edit
+                    div.icon(title="delete")
+                        a(href="/contact/#{contact.identifier}/delete", title="delete")
+                            span.ui-icon.ui-icon-trash delete
 

@@ -1,14 +1,46 @@
+/* Positioning */
 #heading {
     display: block;
+    height: 70px;
 }
-#heading a {
+
+#navigation {
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+#navigation a {
     padding-right: 10px;
 }
+
 #body {
+    position: relative;
     display: block;
 }
+
 #footer {
     display: block;
+    text-align: center;
+    padding-top: 100px;
+}
+
+h3 {
+    padding-left: 20px;
+}
+
+.head img {
+    float: left;
+}
+
+.head .title {
+    font-size: x-large;
+    padding-left: 100px;
+}
+
+.head .subtitle {
+    font-size: small;
+    padding-left: 120px;
 }
 
 .error {
@@ -21,4 +53,31 @@
 
 .address table th {
     text-align: left;
+}
+
+.contacts {
+    width: 500px;
+}
+
+.contacts .name {
+    width: 400px;
+}
+
+span.ui-icon {
+    float: left;
+    margin: 0 4px;
+}
+
+div.icon {
+    margin: 2px;
+    position: relative;
+    padding: 4px 0;
+    cursor: pointer;
+    float: left;
+    list-style: none;
+}
+
+.block {
+    display: block;
+    padding-bottom: 25px;
 }

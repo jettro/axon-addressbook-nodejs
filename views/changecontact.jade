@@ -1,13 +1,17 @@
-h1 Change Contact Name
-- if (error)
-    div.error
-        #{error}
-div
-    form(method="post")
-        fieldset
-            legend change contact name
-            p
-                label(for="new_name") Name:
-                    input(type="text", name="new_name", size="50", value="#{contact.name}")
-        p.buttons
-            input(type="submit", value="Update")
+div.ui-widget-content.ui-corner-all.contacts
+    h3.ui-widget-header.ui-corner-all Change Contact Name
+
+    - if (error)
+        div.ui-state-error.ui-corner-all
+            span.ui-icon.ui-icon-alert
+            #{error}
+
+    div
+        form(method="post")
+            fieldset
+                legend change contact name
+                p
+                    label(for="new_name") Name:
+                        input(type="text", name="new_name", size="50", value="#{contact.name}")
+            p.buttons
+                input(type="submit", value="Update")

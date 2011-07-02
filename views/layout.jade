@@ -1,17 +1,22 @@
 !!! 5
 html(lang="en")
     head
-        title Nodejs presenter
+        title Axon addressbook
         link(href="/style/main.css", media="screen", rel="stylesheet", type="text/css")
-        link(href="/style/sunny/jquery-ui-1.8.14.custom.css", media="screen", rel="stylesheet", type="text/css")
+        link(href="/style/smoothness/jquery-ui-1.8.14.custom.css", media="screen", rel="stylesheet", type="text/css")
         script(src='/js/jquery-1.6.1.min.js')
         script(src='/js/jquery-ui-1.8.14.custom.min.js')
         script(src='/js/local.js')
     body
-        div#heading
-            a(href="/") List
-            a(href="/contact/new") New Contact
+        div#heading.ui-widget-content.ui-corner-top
+            div.head
+                img(src="/images/rolodex.png")
+                div.title Axon addressbook
+                div.subtitle powered by node.js
+        div#navigation.ui-widget-header.ui-corner-bottom
+            a(href="/") List all contacts
+            a(href="/contact/new") New contact
         div#body!= body
         div#footer
-            p footer
+            a(href="http://www.gridshore.nl") www.gridshore.nl
 

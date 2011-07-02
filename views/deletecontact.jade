@@ -1,12 +1,14 @@
-h1 Delete Contact
-- if (error)
-    div.error
-        #{error}
-div
+div.ui-widget-content.ui-corner-all.contacts
+    h3.ui-widget-header.ui-corner-all Delete Contact
+
+    - if (error)
+        div.ui-state-error.ui-corner-all
+            span.ui-icon.ui-icon-alert
+            #{error}
     div
         form(method="post")
             fieldset
-                legend change contact name
+                legend delete contact
                 p Name: #{contact.name}
             p.buttons
                 input(type="submit", value="Delete")
