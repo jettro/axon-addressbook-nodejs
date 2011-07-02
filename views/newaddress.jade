@@ -1,0 +1,23 @@
+h1 New Address for #{contact.name}
+- if (error)
+    div.error
+        #{error}
+p Adding a new address of an existing type will not generate an error, it will overwrite the current one. So beware!
+div
+    form(method="post")
+        fieldset
+            legend new address
+            p
+                label(for="addressType") Address type
+                    select(name="addressType")
+                        option(value="PRIVATE") private
+                        option(value="WORK") work
+                        option(value="VACATION") vacation
+                label(for="streetAndNumber") Street and number
+                    input(type="text", name="streetAndNumber", size="50")
+                label(for="zipCode") Zip code
+                    input(type="text", name="zipCode", size="10")
+                label(for="city") City
+                    input(type="text", name="city", size="50")
+        p.buttons
+            input(type="submit", value="Create")

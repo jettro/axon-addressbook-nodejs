@@ -3,12 +3,11 @@ h1 Change Contact Name
     div.error
         #{error}
 div
-    div
-        form(method="post")
-            fieldset
-                legend change contact name
-                p
-                    label(for="new_name") Name:
-                        input(type="text", name="new_name", size="50", value="#{contact.name}")
-            p.buttons
-                input(type="submit", value="Update")
+    form(method="post")
+        fieldset
+            legend change contact name
+            p
+                label(for="new_name") Name:
+                    input(type="text", name="new_name", size="50", value="#{contact.name}")
+        p.buttons
+            input(type="submit", value="Update")

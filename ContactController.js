@@ -78,4 +78,98 @@ ContactController.prototype.deleteContactPostForm = function(req, res) {
     });
 };
 
+/* add an Address */
+ContactController.prototype.newAddressShowForm = function(req,res) {
+    var identifier = req.params.identifier;
+    repository.obtainContact(identifier,function(contact) {
+        res.render('newaddress', {locals: {error:'', contact:contact}});
+    });
+};
+
+ContactController.prototype.newAddressPostForm = function(req,res) {
+    var address = {};
+    address.identifier = req.params.identifier;
+    address.addressType = req.body.addressType;
+    address.streetAndNumber = req.body.streetAndNumber;
+    address.zipCode = req.body.zipCode;
+    address.city = req.body.city;
+    repository.addAddress(address,function(code,message) {
+        if (code == "ok") {
+            res.redirect("/contact/"+address.identifier);
+        } else {
+            res.render('newaddress', {locals: {error:message, contact:contact}});
+        }
+    });
+};
+
+/* change an address */
+ContactController.prototype.changeAddressShowForm = function(req,res) {
+    var identifier = req.params.identifier;
+    var requestedAddressType = req.params.addressType;
+    repository.obtainContact(identifier,function(contact) {
+        var address = findRequestAddressByType(contact.addresses,requestedAddressType);
+        if (address) {
+            res.render('changeaddress', {locals:{error:'', address:address}});
+        } else {
+            res.redirect('/contact/'+contact.identifier+'/address/new');
+        }
+    });
+};
+
+ContactController.prototype.changeAddressPostForm = function(req,res) {
+    var address = {};
+    address.identifier = req.params.identifier;
+    address.addressType = req.params.addressType;
+    address.streetAndNumber = req.body.streetAndNumber;
+    address.zipCode = req.body.zipCode;
+    address.city = req.body.city;
+    repository.addAddress(address,function(code,message) {
+        if (code == "ok") {
+            res.redirect("/contact/"+address.identifier);
+        } else {
+            res.render('changeaddress', {locals: {error:message, contact:contact}});
+        }
+    });
+};
+
+/* Remove an address */
+ContactController.prototype.deleteAddressShowForm = function(req,res) {
+    var identifier = req.params.identifier;
+    var requestedAddressType = req.params.addressType;
+    repository.obtainContact(identifier,function(contact) {
+        var address = findRequestAddressByType(contact.addresses,requestedAddressType);
+        if (address) {
+            res.render('deleteaddress', {locals:{error:'', address:address}});
+        } else {
+            res.redirect('/contact/'+contact.identifier);
+        }
+    });
+};
+
+ContactController.prototype.deleteAddressPostForm = function(req,res) {
+    var address = {};
+    address.identifier = req.params.identifier;
+    address.addressType = req.params.addressType;
+    repository.removeAddress(address,function(code,message) {
+        if (code == "ok") {
+            res.redirect("/contact/"+address.identifier);
+        } else {
+            res.render('deleteaddress', {locals: {error:message, address:address}});
+        }
+    });
+};
+
 module.exports = ContactController;
+
+/* helper functions */
+function findRequestAddressByType(addresses,addressType) {
+    if (!addresses) {
+        return null;
+    }
+    for (var i = 0; i < addresses.length; i++) {
+        if (addresses[i].addressType == addressType) {
+            return addresses[i];
+        }
+    }
+    return null;
+}

@@ -1,0 +1,19 @@
+h1 Change #{address.addressType} Address for #{address.name}
+- if (error)
+    div.error
+        #{error}
+p You cannot change the type of an address, that what be a create instead of a change due to the chosen model
+div
+    form(method="post")
+        input(type="hidden", value="#{address.addressType}")
+        fieldset
+            legend change #{address.addressType} address
+            p
+                label(for="streetAndNumber") Street and number
+                    input(type="text", name="streetAndNumber", size="50", value="#{address.streetAndNumber}")
+                label(for="zipCode") Zip code
+                    input(type="text", name="zipCode", size="10", value="#{address.zipCode}")
+                label(for="city") City
+                    input(type="text", name="city", size="50", value="#{address.city}")
+        p.buttons
+            input(type="submit", value="Update")

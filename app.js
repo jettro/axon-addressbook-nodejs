@@ -27,6 +27,12 @@ app.get('/contact/:identifier/edit',contactController.changeContactShowForm);
 app.post('/contact/:identifier/edit',contactController.changeContactPostForm);
 app.get('/contact/:identifier/delete',contactController.deleteContactShowForm);
 app.post('/contact/:identifier/delete',contactController.deleteContactPostForm);
+app.get('/contact/:identifier/address/new',contactController.newAddressShowForm);
+app.post('/contact/:identifier/address/new',contactController.newAddressPostForm);
+app.get('/contact/:identifier/address/:addressType/edit',contactController.changeAddressShowForm);
+app.post('/contact/:identifier/address/:addressType/edit',contactController.changeAddressPostForm);
+app.get('/contact/:identifier/address/:addressType/delete',contactController.deleteAddressShowForm);
+app.post('/contact/:identifier/address/:addressType/delete',contactController.deleteAddressPostForm);
 
 app.listen(8018);
 console.log('Express server started on port %s', app.address().port);

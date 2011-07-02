@@ -89,7 +89,7 @@ ContactRepository.prototype.removeContact = function(identifier, callback) {
                 console.log(data);
                 callback('error', 'Did you for get to send an identifier?');
             } else {
-                callback('ok', 'The new contact removal process has been send')
+                callback('ok', 'The new contact removal request has been send')
             }
         });
     });
@@ -100,6 +100,47 @@ ContactRepository.prototype.removeContact = function(identifier, callback) {
     req.write(JSON.stringify(contact));
     req.end();
 };
+
+ContactRepository.prototype.addAddress = function(address,callback) {
+    var opts = createHttpRequestOpts('/contacts/'+address.identifier+'/address', 'PUT');
+
+    var req = http.request(opts, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', function(data) {
+            if (res.statusCode != 200) {
+                console.log(data);
+                callback('error', 'Did you for get to send an identifier?');
+            } else {
+                callback('ok', 'The new address has been send')
+            }
+        });
+    });
+
+    req.write(JSON.stringify(address));
+    req.end();
+
+};
+
+ContactRepository.prototype.removeAddress = function(address,callback) {
+    var opts = createHttpRequestOpts('/contacts/'+address.identifier+'/address', 'DELETE');
+
+    var req = http.request(opts, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', function(data) {
+            if (res.statusCode != 200) {
+                console.log(data);
+                callback('error', 'Did you for get to send an identifier or the address type?');
+            } else {
+                callback('ok', 'The address has been removed')
+            }
+        });
+    });
+
+    req.write(JSON.stringify(address));
+    req.end();
+
+};
+
 
 function createHttpRequestOpts(path, method) {
     return {

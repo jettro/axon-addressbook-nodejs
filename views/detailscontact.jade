@@ -1,18 +1,21 @@
 h1 Contact: #{contact.name}
 div
+    a(href="/contact/#{contact.identifier}/address/new") new address
+div
     - each address in contact.addresses
-        tr
-            td(colspan="2")
-                div.address
-                    h2 #{address.addressType}
-                    table
-                        tr
-                            th street
-                            td #{address.streetAndNumber}
-                        tr
-                            th zip code
-                            td #{address.zipCode}
-                        tr
-                            th city
-                            td #{address.city}
+        div.address
+            h2 #{address.addressType}
+            table
+                tr
+                    th street
+                    td #{address.streetAndNumber}
+                tr
+                    th zip code
+                    td #{address.zipCode}
+                tr
+                    th city
+                    td #{address.city}
+            div
+                a(href="/contact/#{contact.identifier}/address/#{address.addressType}/edit") edit 
+                a(href="/contact/#{contact.identifier}/address/#{address.addressType}/delete") delete
 
