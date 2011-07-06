@@ -34,5 +34,24 @@ app.post('/contact/:identifier/address/:addressType/edit',contactController.chan
 app.get('/contact/:identifier/address/:addressType/delete',contactController.deleteAddressShowForm);
 app.post('/contact/:identifier/address/:addressType/delete',contactController.deleteAddressPostForm);
 
+var Now = require('now');
+var everyone = Now.initialize(app);
+
+var redis = require("redis"),
+    client = redis.createClient();
+
+client.on("error", function (err) {
+    console.log("Error %s", err);
+});
+
+// TODO jettro: Does not work if the queue is not available in redis, create retry mechanism
+client.on("message", function (channel, message) {
+    console.log("Received message: %s", message);
+    everyone.now.receiveContact(message);
+});
+client.subscribe("nl.axonframework.examples.addressbook");
+
+
+
 app.listen(8018);
 console.log('Express server started on port %s', app.address().port);

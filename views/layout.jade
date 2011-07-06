@@ -6,7 +6,9 @@ html(lang="en")
         link(href="/style/smoothness/jquery-ui-1.8.14.custom.css", media="screen", rel="stylesheet", type="text/css")
         script(src='/js/jquery-1.6.1.min.js')
         script(src='/js/jquery-ui-1.8.14.custom.min.js')
-        script(src='/js/local.js')
+        - if (typeof nowjs != 'undefined')
+            script(src='/nowjs/now.js')
+            script(src='/js/local.js')
     body
         div#heading.ui-widget-content.ui-corner-top
             div.head
@@ -16,7 +18,12 @@ html(lang="en")
         div#navigation.ui-widget-header.ui-corner-bottom
             a(href="/") List all contacts
             a(href="/contact/new") New contact
-        div#body!= body
+        div#body
+            div!= body
+            - if (typeof nowjs != 'undefined')
+                div#messagebox.ui-widget-content.ui-corner-all
+                    h3.ui-widget-header.ui-corner-all Messages
+                    div#messages
         div#footer
             a(href="http://www.gridshore.nl") www.gridshore.nl
 

@@ -10,7 +10,7 @@ function ContactController(contactsRepository) {
 
 ContactController.prototype.listContacts = function(req, res) {
     repository.listContacts(function(contacts) {
-        res.render('index', {locals: {contacts: contacts}});
+        res.render('index', {locals: {contacts: contacts, nowjs: true}});
     });
 };
 
