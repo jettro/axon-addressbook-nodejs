@@ -9,8 +9,7 @@
  * @author Jettro Coenradie
  */
 var assert = require('assert');
-var ContactRepository = require("../ContactRepository");
-var repository = ContactRepository.createRepo('localhost', 8080);
+var repository = require('../ContactRepository')('localhost',8080);
 
 var numContacts;
 
