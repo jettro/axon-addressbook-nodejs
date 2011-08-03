@@ -3,9 +3,8 @@
  * @author Jettro Coenradie
  */
 var pub = __dirname + '/public';
-var ContactController = require('./ContactController');
-var repository = require('./ContactRepository').createRepo('localhost',8080);
-var contactController = new ContactController(repository);
+var repository = require('./ContactRepository')('localhost',8080);
+var contactController = require('./ContactController')(repository);
 
 var express = require('express')
         , app = express.createServer();

@@ -6,7 +6,8 @@
     "dependencies":{
         "express":"",
         "jade":"",
-        "":""
+        "now":"",
+        "redis":""
     },
     "main":"app.js"
 
